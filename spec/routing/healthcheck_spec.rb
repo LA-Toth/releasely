@@ -4,6 +4,6 @@ RSpec.describe 'healthcheck' do
   end
 
   it 'is routed to /' do
-    expect(get: '/').to route_to(controller: 'healthcheck', action: 'index')
+    should route(:get, '/').to(controller: 'healthcheck', action: 'index')
   end
 end
