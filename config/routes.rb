@@ -12,6 +12,8 @@ end
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'healthcheck#index'
+
   dir = File.expand_path(__dir__)
   files = Dir.glob("#{dir}/routes/*.rb")
 
