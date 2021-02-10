@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @release_version.version %>
+</p>
+
+<%= link_to 'Edit', edit_release_version_path(@release_version) %> |
+<%= link_to 'Back', release_versions_path %>

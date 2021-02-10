@@ -1,0 +1,2 @@
+class ReleaseVersion < ApplicationRecord
+end

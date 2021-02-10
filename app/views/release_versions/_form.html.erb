@@ -1,0 +1,22 @@
+<%= form_with(model: release_version) do |form| %>
+  <% if release_version.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(release_version.errors.count, "error") %> prohibited this release_version from being saved:</h2>
+
+      <ul>
+        <% release_version.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :version %>
+    <%= form.text_field :version %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
