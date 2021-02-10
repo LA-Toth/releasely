@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sub_component.name %>
+</p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @sub_component.component_id %>
+</p>
+
+<%= link_to 'Edit', edit_sub_component_path(@sub_component) %> |
+<%= link_to 'Back', sub_components_path %>

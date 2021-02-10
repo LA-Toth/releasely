@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_164143) do
+ActiveRecord::Schema.define(version: 2021_02_10_164527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2021_02_10_164143) do
     t.index ["version_id"], name: "index_releases_on_version_id"
   end
 
+  create_table "sub_components", force: :cascade do |t|
+    t.string "name"
+    t.bigint "component_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["component_id"], name: "index_sub_components_on_component_id"
+    t.index ["name"], name: "index_sub_components_on_name", unique: true
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "lead_id", null: false
@@ -80,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_164143) do
   add_foreign_key "components", "teams"
   add_foreign_key "releases", "products"
   add_foreign_key "releases", "release_versions", column: "version_id"
+  add_foreign_key "sub_components", "components"
   add_foreign_key "teams", "users", column: "lead_id"
   add_foreign_key "users", "teams"
 end
