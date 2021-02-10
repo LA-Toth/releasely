@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_164527) do
+ActiveRecord::Schema.define(version: 2021_02_10_165639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2021_02_10_164527) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_components_on_name", unique: true
     t.index ["team_id"], name: "index_components_on_team_id"
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.string "issue_key", null: false
+    t.string "title", null: false
+    t.string "state", null: false
+    t.boolean "blocker", default: false, null: false
+    t.datetime "last_updated_at", null: false
+    t.datetime "last_reply_at", null: false
+    t.bigint "assignee_id", null: false
+    t.integer "issue_category", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assignee_id"], name: "index_issues_on_assignee_id"
+    t.index ["blocker"], name: "index_issues_on_blocker"
+    t.index ["issue_category"], name: "index_issues_on_issue_category"
+    t.index ["issue_key"], name: "index_issues_on_issue_key", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -87,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_164527) do
   end
 
   add_foreign_key "components", "teams"
+  add_foreign_key "issues", "users", column: "assignee_id"
   add_foreign_key "releases", "products"
   add_foreign_key "releases", "release_versions", column: "version_id"
   add_foreign_key "sub_components", "components"

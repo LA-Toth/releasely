@@ -1,0 +1,57 @@
+<%= form_with(model: issue) do |form| %>
+  <% if issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+        <% issue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :issue_key %>
+    <%= form.text_field :issue_key %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blocker %>
+    <%= form.check_box :blocker %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_updated_at %>
+    <%= form.datetime_select :last_updated_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_reply_at %>
+    <%= form.datetime_select :last_reply_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignee_id %>
+    <%= form.text_field :assignee_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_category %>
+    <%= form.text_field :issue_category %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
