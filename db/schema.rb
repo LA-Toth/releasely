@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_081958) do
+ActiveRecord::Schema.define(version: 2021_02_12_083336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,24 @@ ActiveRecord::Schema.define(version: 2021_02_12_081958) do
     t.index ["name"], name: "index_test_configs_on_name", unique: true
   end
 
+  create_table "test_results", force: :cascade do |t|
+    t.integer "ext_id", null: false
+    t.integer "tests_count", null: false
+    t.integer "tests_passed", null: false
+    t.integer "tests_failed", null: false
+    t.integer "tests_skipped", null: false
+    t.bigint "release_id", null: false
+    t.bigint "split_id", null: false
+    t.bigint "config_id", null: false
+    t.bigint "asssignee_id", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asssignee_id"], name: "index_test_results_on_asssignee_id"
+    t.index ["config_id"], name: "index_test_results_on_config_id"
+    t.index ["release_id"], name: "index_test_results_on_release_id"
+    t.index ["split_id"], name: "index_test_results_on_split_id"
+  end
+
   create_table "test_splits", force: :cascade do |t|
     t.bigint "sub_component_id", null: false
     t.string "name", null: false
@@ -119,6 +137,10 @@ ActiveRecord::Schema.define(version: 2021_02_12_081958) do
   add_foreign_key "releases", "release_versions", column: "version_id"
   add_foreign_key "sub_components", "components"
   add_foreign_key "teams", "users", column: "lead_id"
+  add_foreign_key "test_results", "releases"
+  add_foreign_key "test_results", "test_configs", column: "config_id"
+  add_foreign_key "test_results", "test_splits", column: "split_id"
+  add_foreign_key "test_results", "users", column: "asssignee_id"
   add_foreign_key "test_splits", "sub_components"
   add_foreign_key "users", "teams"
 end

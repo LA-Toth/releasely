@@ -1,0 +1,62 @@
+<%= form_with(model: test_result) do |form| %>
+  <% if test_result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(test_result.errors.count, "error") %> prohibited this test_result from being saved:</h2>
+
+      <ul>
+        <% test_result.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ext_id %>
+    <%= form.number_field :ext_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tests_count %>
+    <%= form.number_field :tests_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tests_passed %>
+    <%= form.number_field :tests_passed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tests_failed %>
+    <%= form.number_field :tests_failed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tests_skipped %>
+    <%= form.number_field :tests_skipped %>
+  </div>
+
+  <div class="field">
+    <%= form.label :release_id %>
+    <%= form.text_field :release_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :split_id %>
+    <%= form.text_field :split_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :config_id %>
+    <%= form.text_field :config_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :asssignee_id %>
+    <%= form.text_field :asssignee_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -8,5 +8,6 @@ Releasely::Application.routes.draw do
   resources :teams
   resources :test_configs
   resources :test_splits
+  resources :test_results
   resources :users
 end

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ext:</strong>
+  <%= @test_result.ext_id %>
+</p>
+
+<p>
+  <strong>Tests count:</strong>
+  <%= @test_result.tests_count %>
+</p>
+
+<p>
+  <strong>Tests passed:</strong>
+  <%= @test_result.tests_passed %>
+</p>
+
+<p>
+  <strong>Tests failed:</strong>
+  <%= @test_result.tests_failed %>
+</p>
+
+<p>
+  <strong>Tests skipped:</strong>
+  <%= @test_result.tests_skipped %>
+</p>
+
+<p>
+  <strong>Release:</strong>
+  <%= @test_result.release_id %>
+</p>
+
+<p>
+  <strong>Split:</strong>
+  <%= @test_result.split_id %>
+</p>
+
+<p>
+  <strong>Config:</strong>
+  <%= @test_result.config_id %>
+</p>
+
+<p>
+  <strong>Asssignee:</strong>
+  <%= @test_result.asssignee_id %>
+</p>
+
+<%= link_to 'Edit', edit_test_result_path(@test_result) %> |
+<%= link_to 'Back', test_results_path %>
