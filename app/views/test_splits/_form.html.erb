@@ -1,0 +1,32 @@
+<%= form_with(model: test_split) do |form| %>
+  <% if test_split.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(test_split.errors.count, "error") %> prohibited this test_split from being saved:</h2>
+
+      <ul>
+        <% test_split.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sub_component_id %>
+    <%= form.text_field :sub_component_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :split_id %>
+    <%= form.number_field :split_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

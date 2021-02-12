@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_165639) do
+ActiveRecord::Schema.define(version: 2021_02_12_081958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,16 @@ ActiveRecord::Schema.define(version: 2021_02_10_165639) do
     t.index ["name"], name: "index_test_configs_on_name", unique: true
   end
 
+  create_table "test_splits", force: :cascade do |t|
+    t.bigint "sub_component_id", null: false
+    t.string "name", null: false
+    t.integer "split_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sub_component_id", "name", "split_id"], name: "index_test_splits_on_sub_component_id_and_name_and_split_id", unique: true
+    t.index ["sub_component_id"], name: "index_test_splits_on_sub_component_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "given_name", null: false
@@ -109,5 +119,6 @@ ActiveRecord::Schema.define(version: 2021_02_10_165639) do
   add_foreign_key "releases", "release_versions", column: "version_id"
   add_foreign_key "sub_components", "components"
   add_foreign_key "teams", "users", column: "lead_id"
+  add_foreign_key "test_splits", "sub_components"
   add_foreign_key "users", "teams"
 end

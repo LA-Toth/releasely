@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sub component:</strong>
+  <%= @test_split.sub_component_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @test_split.name %>
+</p>
+
+<p>
+  <strong>Split:</strong>
+  <%= @test_split.split_id %>
+</p>
+
+<%= link_to 'Edit', edit_test_split_path(@test_split) %> |
+<%= link_to 'Back', test_splits_path %>

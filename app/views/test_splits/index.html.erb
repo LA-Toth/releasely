@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Test Splits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub component</th>
+      <th>Name</th>
+      <th>Split</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_splits.each do |test_split| %>
+      <tr>
+        <td><%= test_split.sub_component_id %></td>
+        <td><%= test_split.name %></td>
+        <td><%= test_split.split_id %></td>
+        <td><%= link_to 'Show', test_split %></td>
+        <td><%= link_to 'Edit', edit_test_split_path(test_split) %></td>
+        <td><%= link_to 'Destroy', test_split, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test Split', new_test_split_path %>
