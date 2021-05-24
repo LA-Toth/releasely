@@ -54,5 +54,13 @@ module Releasely
     end
 
     ActiveRecord::ConnectionAdapters::AbstractAdapter.include Releasely::SchemaStatements
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: ENV.fetch('SMTP_SERVER') { 'localhost' },
+      port: (ENV.fetch('SMTP_PORT') { '2525' }).to_i
+    }
+    config.action_mailer.default_options = { from: ENV.fetch('MAILER_DEFAULT_FROM') { 'no-reply@example.com' },
+                                             to: ENV.fetch('MAILER_DEFAULT_TO') { 'catch-all@localhost' } }
   end
 end

@@ -1,0 +1,13 @@
+<h1>Exception occurred</h1>
+
+<p>
+  Exception: <%= @exception.class.name %> <br/>
+  Message: <%= @exception.message %>
+</p>
+
+<p>
+  Backtrace:<br/>
+  <% @exception.backtrace.each do |line| %>
+    <%= line %> <br/>
+  <% end %>
+</p>
