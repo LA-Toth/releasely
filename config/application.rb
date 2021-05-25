@@ -53,6 +53,8 @@ module Releasely
       g.javascripts false
     end
 
+    # ActiveRecord::Base.logger = Logger.new(STDOUT)
+    # Rails.logger = Logger.new(STDOUT)
     ActiveRecord::ConnectionAdapters::AbstractAdapter.include Releasely::SchemaStatements
 
     config.action_mailer.delivery_method = :smtp
