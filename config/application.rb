@@ -16,6 +16,7 @@ require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
 
 require_relative '../lib/helpers'
+require_relative '../lib/schema_statements'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -51,5 +52,7 @@ module Releasely
       g.stylesheets false
       g.javascripts false
     end
+
+    ActiveRecord::ConnectionAdapters::AbstractAdapter.include Releasely::SchemaStatements
   end
 end
