@@ -85,3 +85,12 @@ production:
   database: <%= ENV.fetch("DATABASE_NAME") { 'releasely' } %>
   username: <%= ENV.fetch("DATABASE_USER") { 'releasely' } %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
+
+otherdb:
+  #adapter: mysql2
+  #ssl_mode: disabled
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("OTHERDB_HOST") %>
+  database: <%= ENV.fetch("OTHERDB_DATABASE_NAME") %>
+  username: <%= ENV.fetch("OTHERDB_DATABASE_USER") %>
+  password: <%= ENV['OTHERDB_DATABASE_PASSWORD'] %>
